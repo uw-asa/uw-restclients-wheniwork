@@ -28,7 +28,7 @@ class DAO_BASE(object):
 
 class MY_DAO(DAO_BASE):
     def _getCache(self):
-        return self._getModule('DAO_CACHE_CLASS', NoCache)
+        return self._getModule('WHENIWORK_DAO_CACHE_CLASS', NoCache)
 
     def _getURL(self, service, url, headers):
         dao = self._getDAO()
