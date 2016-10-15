@@ -1,5 +1,5 @@
 from wheniwork_restclient.wheniwork import WhenIWork
-from wheniwork_restclient.models.wheniwork import Shift
+from wheniwork_restclient.models import Shift
 from wheniwork_restclient.wheniwork.locations import Locations
 from wheniwork_restclient.wheniwork.sites import Sites
 from wheniwork_restclient.wheniwork.positions import Positions

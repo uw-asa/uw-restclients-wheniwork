@@ -1,5 +1,5 @@
 from wheniwork_restclient.wheniwork import WhenIWork
-from wheniwork_restclient.models.wheniwork import Request
+from wheniwork_restclient.models import Request
 from wheniwork_restclient.wheniwork.users import Users
 from wheniwork_restclient.wheniwork.messages import Messages
 import dateutil.parser

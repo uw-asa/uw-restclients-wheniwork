@@ -1,5 +1,5 @@
 from wheniwork_restclient.wheniwork import WhenIWork
-from wheniwork_restclient.models.wheniwork import Message
+from wheniwork_restclient.models import Message
 import dateutil.parser
 from urllib import urlencode
 

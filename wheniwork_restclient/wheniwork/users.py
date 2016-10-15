@@ -1,6 +1,6 @@
 from django.conf import settings
 from wheniwork_restclient.wheniwork import WhenIWork
-from wheniwork_restclient.models.wheniwork import User
+from wheniwork_restclient.models import User
 from urllib import urlencode
 
 
