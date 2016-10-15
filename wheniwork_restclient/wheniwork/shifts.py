@@ -1,9 +1,9 @@
-from restclients.wheniwork import WhenIWork
-from restclients.models.wheniwork import Shift
-from restclients.wheniwork.locations import Locations
-from restclients.wheniwork.sites import Sites
-from restclients.wheniwork.positions import Positions
-from restclients.wheniwork.users import Users
+from wheniwork_restclient.wheniwork import WhenIWork
+from wheniwork_restclient.models.wheniwork import Shift
+from wheniwork_restclient.wheniwork.locations import Locations
+from wheniwork_restclient.wheniwork.sites import Sites
+from wheniwork_restclient.wheniwork.positions import Positions
+from wheniwork_restclient.wheniwork.users import Users
 import dateutil.parser
 from urllib import urlencode
 

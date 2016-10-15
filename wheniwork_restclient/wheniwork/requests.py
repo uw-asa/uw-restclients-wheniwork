@@ -1,7 +1,7 @@
-from restclients.wheniwork import WhenIWork
-from restclients.models.wheniwork import Request
-from restclients.wheniwork.users import Users
-from restclients.wheniwork.messages import Messages
+from wheniwork_restclient.wheniwork import WhenIWork
+from wheniwork_restclient.models.wheniwork import Request
+from wheniwork_restclient.wheniwork.users import Users
+from wheniwork_restclient.wheniwork.messages import Messages
 import dateutil.parser
 from urllib import urlencode
 

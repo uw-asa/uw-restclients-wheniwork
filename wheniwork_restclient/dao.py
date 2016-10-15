@@ -66,7 +66,7 @@ class MY_DAO(DAO_BASE):
         return response
 
 
-class WHENIWORK_DAO(MY_DAO):
+class WhenIWork_DAO(MY_DAO):
     def getURL(self, url, headers):
         return self._getURL('wheniwork', url, headers)
 

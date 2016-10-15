@@ -1,4 +1,4 @@
- import sys
+import sys
 import os
 from os.path import abspath, dirname
 import re
@@ -10,7 +10,7 @@ from urllib import quote, unquote, urlencode
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
 from importlib import import_module
-from spotseeker_restclient.mock_http import MockHTTP
+from wheniwork_restclient.mock_http import MockHTTP
 
 
 """
@@ -51,7 +51,7 @@ def get_mockdata_url(service_name, implementation_name,
                      url, headers):
     """
     :param service_name:
-        possible "spotseeker"
+        possible "wheniwork"
     :param implementation_name:
         possible values: "file", etc.
     """

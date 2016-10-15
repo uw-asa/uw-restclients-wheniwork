@@ -1,6 +1,6 @@
 from django.conf import settings
-from restclients.wheniwork import WhenIWork
-from restclients.models.wheniwork import Site
+from wheniwork_restclient.wheniwork import WhenIWork
+from wheniwork_restclient.models.wheniwork import Site
 
 
 class Sites(WhenIWork):

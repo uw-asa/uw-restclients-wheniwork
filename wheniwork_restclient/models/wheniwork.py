@@ -7,10 +7,6 @@ class Account(models.Model):
     master = models.ForeignKey('self')
     company = models.CharField(max_length=500)
 
-    class Meta:
-        db_table = "restclients_wheniwork_account"
-        app_label = 'restclients'
-
 
 class User(models.Model):
     id = models.PositiveIntegerField(primary_key=True)
@@ -19,28 +15,16 @@ class User(models.Model):
     email = models.CharField(max_length=100, null=True)
     employee_code = models.CharField(max_length=100, null=True)
 
-    class Meta:
-        db_table = "restclients_wheniwork_user"
-        app_label = 'restclients'
-
 
 class Location(models.Model):
     id = models.PositiveIntegerField(primary_key=True)
     name = models.CharField(max_length=100, null=True)
     address = models.CharField(max_length=100)
 
-    class Meta:
-        db_table = "restclients_wheniwork_location"
-        app_label = 'restclients'
-
 
 class Position(models.Model):
     id = models.PositiveIntegerField(primary_key=True)
     name = models.CharField(max_length=100, null=True)
-
-    class Meta:
-        db_table = "restclients_wheniwork_position"
-        app_label = 'restclients'
 
 
 class Site(models.Model):
@@ -48,10 +32,6 @@ class Site(models.Model):
     name = models.CharField(max_length=100, null=True)
     location = models.ForeignKey(Location)
     address = models.CharField(max_length=100)
-
-    class Meta:
-        db_table = "restclients_wheniwork_site"
-        app_label = 'restclients'
 
 
 class Shift(models.Model):
@@ -64,10 +44,6 @@ class Shift(models.Model):
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
     notes = models.CharField(max_length=350)
-
-    class Meta:
-        db_table = "restclients_wheniwork_shifts"
-        app_label = 'restclients'
 
 
 class Request(models.Model):
@@ -108,10 +84,6 @@ class Request(models.Model):
             return True
         return False
 
-    class Meta:
-        db_table = "restclients_wheniwork_request"
-        app_label = 'restclients'
-
 
 class Message(models.Model):
     id = models.PositiveIntegerField(primary_key=True)
@@ -125,7 +97,3 @@ class Message(models.Model):
     created_at = models.DateTimeField()
     updated_at = models.DateTimeField()
     type = models.PositiveSmallIntegerField()
-
-    class Meta:
-        db_table = "restclients_wheniwork_message"
-        app_label = 'restclients'

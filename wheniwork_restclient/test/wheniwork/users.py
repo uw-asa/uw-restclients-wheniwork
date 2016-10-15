@@ -1,12 +1,12 @@
 from django.test import TestCase
-from restclients.wheniwork.users import Users
-from restclients.models.wheniwork import User
+from wheniwork_restclient.wheniwork.users import Users
+from wheniwork_restclient.models.wheniwork import User
 
 
 class WhenIWorkTestUsers(TestCase):
     def test_get_user(self):
         with self.settings(
-                RESTCLIENTS_CANVAS_DAO_CLASS='restclients.dao_implementation.wheniwork.File'):
+                WHENIWORK_DAO_CLASS='wheniwork_restclient.dao_implementation.wheniwork.File'):
             wheniwork = Users()
 
             user = wheniwork.get_user(188885)

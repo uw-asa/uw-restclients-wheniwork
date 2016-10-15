@@ -1,6 +1,6 @@
 from django.conf import settings
-from restclients.wheniwork import WhenIWork
-from restclients.models.wheniwork import Location
+from wheniwork_restclient.wheniwork import WhenIWork
+from wheniwork_restclient.models.wheniwork import Location
 
 
 class Locations(WhenIWork):

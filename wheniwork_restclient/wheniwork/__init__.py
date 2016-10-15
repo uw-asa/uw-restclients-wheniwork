@@ -2,8 +2,8 @@
 This is the interface for interacting with When I Work's web services.
 """
 from django.conf import settings
-from restclients.dao import WhenIWork_DAO
-from restclients.exceptions import DataFailureException
+from wheniwork_restclient.dao import WhenIWork_DAO
+from wheniwork_restclient.exceptions import DataFailureException
 from urllib import quote, unquote
 import warnings
 import json

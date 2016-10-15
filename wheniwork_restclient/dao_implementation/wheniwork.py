@@ -2,9 +2,8 @@
 Contains When I Work DAO implementations.
 """
 
-from wheniwork.restclients.dao_implementation.live import get_con_pool, \
-    get_live_url
-from wheniwork.restclients.dao_implementation.mock import get_mockdata_url, \
+from wheniwork_restclient.dao_implementation.live import get_live_url
+from wheniwork_restclient.dao_implementation.mock import get_mockdata_url, \
     post_mockdata_url, delete_mockdata_url, put_mockdata_url
 from django.conf import settings
 from os.path import abspath, dirname
@@ -15,8 +14,8 @@ class File(object):
     The File DAO implementation returns generally static content.  Use this
     DAO with this configuration:
 
-    RESTCLIENTS_WHENIWORK_DAO_CLASS =
-    'restclients.dao_implementation.wheniwork.File'
+    WHENIWORK_DAO_CLASS =
+    'wheniwork_restclient.dao_implementation.wheniwork.File'
     """
     def getURL(self, url, headers):
         return get_mockdata_url("wheniwork", "file", url, headers)
@@ -62,12 +61,11 @@ class Live(object):
     """
     This DAO provides real data.  It requires the following configuration:
 
-    RESTCLIENTS_WHENIWORK_HOST="api.wheniwork.com"
-    RESTCLIENTS_WHENIWORK_TOKEN="..."
+    WHENIWORK_HOST="api.wheniwork.com"
+    WHENIWORK_TOKEN="..."
     """
-    pool = None
     ignore_security = getattr(settings,
-                              'RESTCLIENTS_WHENIWORK_IGNORE_CA_SECURITY',
+                              'WHENIWORK_IGNORE_CA_SECURITY',
                               False)
 
     verify_https = True
@@ -75,62 +73,41 @@ class Live(object):
         verify_https = False
 
     def getURL(self, url, headers):
-        host = settings.RESTCLIENTS_WHENIWORK_HOST
-        token = settings.RESTCLIENTS_WHENIWORK_TOKEN
+        host = settings.WHENIWORK_HOST
+        token = settings.WHENIWORK_TOKEN
 
         if "W-Token" not in headers:
             headers["W-Token"] = "%s" % token
 
-        if Live.pool is None:
-            Live.pool = self._get_pool()
-        return get_live_url(Live.pool, 'GET',
-                            host, url, headers=headers,
-                            service_name='wheniwork')
+        return get_live_url('GET',
+                            host, url, headers=headers)
 
     def putURL(self, url, headers, body):
-        host = settings.RESTCLIENTS_WHENIWORK_HOST
-        token = settings.RESTCLIENTS_WHENIWORK_TOKEN
+        host = settings.WHENIWORK_HOST
+        token = settings.WHENIWORK_TOKEN
 
         if "W-Token" not in headers:
             headers["W-Token"] = "%s" % token
 
-        if Live.pool is None:
-            Live.pool = self._get_pool()
-        return get_live_url(Live.pool, 'PUT',
-                            host, url, headers=headers, body=body,
-                            service_name='wheniwork')
+        return get_live_url('PUT',
+                            host, url, headers=headers, body=body)
 
     def postURL(self, url, headers, body):
-        host = settings.RESTCLIENTS_WHENIWORK_HOST
-        token = settings.RESTCLIENTS_WHENIWORK_TOKEN
+        host = settings.WHENIWORK_HOST
+        token = settings.WHENIWORK_TOKEN
 
         if "W-Token" not in headers:
             headers["W-Token"] = "%s" % token
 
-        if Live.pool is None:
-            Live.pool = self._get_pool()
-        return get_live_url(Live.pool, 'POST',
-                            host, url, headers=headers, body=body,
-                            service_name='wheniwork')
+        return get_live_url('POST',
+                            host, url, headers=headers, body=body)
 
     def deleteURL(self, url, headers):
-        host = settings.RESTCLIENTS_WHENIWORK_HOST
-        token = settings.RESTCLIENTS_WHENIWORK_TOKEN
+        host = settings.WHENIWORK_HOST
+        token = settings.WHENIWORK_TOKEN
 
         if "W-Token" not in headers:
             headers["W-Token"] = "%s" % token
 
-        if Live.pool is None:
-            Live.pool = self._get_pool()
-        return get_live_url(Live.pool, 'DELETE',
-                            host, url, headers=headers,
-                            service_name='wheniwork')
-
-    def _get_pool(self):
-        host = settings.RESTCLIENTS_WHENIWORK_HOST
-        socket_timeout = 15  # default values
-        if hasattr(settings, "RESTCLIENTS_WHENIWORK_SOCKET_TIMEOUT"):
-            socket_timeout = settings.RESTCLIENTS_WHENIWORK_SOCKET_TIMEOUT
-        return get_con_pool(host,
-                            verify_https=Live.verify_https,
-                            socket_timeout=socket_timeout)
+        return get_live_url('DELETE',
+                            host, url, headers=headers)

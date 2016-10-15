@@ -1,5 +1,5 @@
-from restclients.wheniwork import WhenIWork
-from restclients.models.wheniwork import Account
+from wheniwork_restclient.wheniwork import WhenIWork
+from wheniwork_restclient.models.wheniwork import Account
 
 
 class Accounts(WhenIWork):
