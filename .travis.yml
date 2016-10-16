@@ -16,7 +16,3 @@ script:
   - coverage run --source=wheniwork_restclient/ --omit=wheniwork_restclient/migrations/* manage.py test wheniwork_restclient
 after_script:
   - coveralls
-notifications:
-  webhooks:
-      urls:
-        - https://yarn.cac.washington.edu/rest/botalyst/v1/travis-ci
