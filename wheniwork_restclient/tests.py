@@ -1,3 +1,4 @@
 from wheniwork_restclient.test.accounts import WhenIWorkTestAccounts
 from wheniwork_restclient.test.users import WhenIWorkTestUsers
 from wheniwork_restclient.test.shifts import WhenIWorkTestShifts
+from wheniwork_restclient.test.positions import WhenIWorkTestPositions
