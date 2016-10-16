@@ -2,7 +2,7 @@ from importlib import import_module
 from django.conf import settings
 from django.core.exceptions import *
 from wheniwork_restclient.cache_implementation import NoCache
-from wheniwork_restclient.dao_implementation.wheniwork import File \
+from wheniwork_restclient.dao_implementation import File \
     as WheniworkFile
 
 

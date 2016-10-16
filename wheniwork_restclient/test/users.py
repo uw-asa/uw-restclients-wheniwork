@@ -7,7 +7,7 @@ class WhenIWorkTestUsers(TestCase):
     def test_users(self):
         with self.settings(
                 WHENIWORK_DAO_CLASS='wheniwork_restclient.dao_implementation.'
-                                    'wheniwork.File'):
+                                    'File'):
             wheniwork = Users()
 
             user = wheniwork.get_user(4364)

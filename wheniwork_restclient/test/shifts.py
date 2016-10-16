@@ -7,7 +7,7 @@ class WhenIWorkTestShifts(TestCase):
     def test_shifts(self):
         with self.settings(
                 WHENIWORK_DAO_CLASS='wheniwork_restclient.dao_implementation.'
-                                    'wheniwork.File'):
+                                    'File'):
             wheniwork = Shifts()
 
             shifts = wheniwork.get_shifts({
