@@ -33,7 +33,7 @@ class Positions(WhenIWork):
         """
         Creates a position
 
-        http://dev.wheniwork.com/#create/update-position
+        http://dev.wheniwork.com/#create-update-position
         """
         url = "/2/positions/"
         body = params

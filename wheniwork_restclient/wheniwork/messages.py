@@ -78,5 +78,5 @@ class Messages(WhenIWork):
         message.content = data['content']
         message.created_at = dateutil.parser.parse(data['created_at'])
         message.updated_at = dateutil.parser.parse(data['updated_at'])
-        message.type = data['type']
+        message.type = data['type'] if 'type' in data else 0
         return message

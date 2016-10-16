@@ -29,18 +29,6 @@ class Locations(WhenIWork):
 
         return locations
 
-    def create_location(self, params={}):
-        """
-        Creates a location
-
-        http://dev.wheniwork.com/#create/update-location
-        """
-        url = "/2/locations/"
-        body = params
-
-        data = self._post_resource(url, body)
-        return self._location_from_json(data["location"])
-
     def _location_from_json(self, data):
         location = Location()
         location.id = data["id"]

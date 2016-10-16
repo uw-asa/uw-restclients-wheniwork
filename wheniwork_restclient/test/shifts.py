@@ -20,7 +20,7 @@ class WhenIWorkTestShifts(TestCase):
             self.assertEquals(shifts[1].notes, 'We need more cowbell.')
 
             shift = wheniwork.create_shift({
-                'notes': 'Come in early today.'
+                'notes': 'Come in early today.',
             })
             self.assertEquals(shift.notes, 'Come in early today.')
 

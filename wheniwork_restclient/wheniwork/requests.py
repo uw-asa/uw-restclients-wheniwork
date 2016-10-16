@@ -44,6 +44,8 @@ class Requests(WhenIWork):
         request.end_time = dateutil.parser.parse(data['end_time'])
         request.created_at = dateutil.parser.parse(data['created_at'])
         request.updated_at = dateutil.parser.parse(data['updated_at'])
-        request.canceled_by_id = data['canceled_by']
+        request.canceled_by_id = data['canceled_by'] \
+            if 'canceled_by' in data else 0
+
         request.hours = str(data['hours'])
         return request

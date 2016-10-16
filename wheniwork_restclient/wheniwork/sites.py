@@ -33,7 +33,7 @@ class Sites(WhenIWork):
         """
         Creates a site
 
-        http://dev.wheniwork.com/#create/update-site
+        http://dev.wheniwork.com/#create-update-site
         """
         url = "/2/sites/"
         body = params
