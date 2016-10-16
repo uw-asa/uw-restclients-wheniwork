@@ -16,7 +16,7 @@ setup(
         'Django<=1.8.6',
         'urllib3',
         'certifi',
-        'dateutil',
+        'python-dateutil',
     ],
     license='Apache License, Version 2.0',  # example license
     description='A Django app for consuming the WhenIWork REST API',
