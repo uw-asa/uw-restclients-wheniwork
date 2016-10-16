@@ -2,6 +2,7 @@
 Contains DAO Cache implementations
 """
 
+
 class NoCache(object):
     """
     This never caches anything.
