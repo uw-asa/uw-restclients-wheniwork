@@ -57,7 +57,7 @@ class MY_DAO(DAO_BASE):
 
     def _deleteURL(self, service, url, headers):
         dao = self._getDAO()
-        response = dao.deleteURL(url, headers, "")
+        response = dao.deleteURL(url, headers)
         return response
 
     def _putURL(self, service, url, headers, body=None):

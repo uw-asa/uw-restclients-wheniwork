@@ -4,7 +4,8 @@ Contains When I Work DAO implementations.
 
 from wheniwork_restclient.dao_implementation.live import get_live_url
 from wheniwork_restclient.dao_implementation.mock import get_mockdata_url, \
-    post_mockdata_url, delete_mockdata_url, put_mockdata_url
+    post_mockdata_url, delete_mockdata_url, put_mockdata_url, \
+    convert_to_platform_safe
 from django.conf import settings
 from os.path import abspath, dirname
 
@@ -54,7 +55,20 @@ class File(object):
         return response
 
     def deleteURL(self, url, headers):
-        return delete_mockdata_url("wheniwork", "file", url, headers)
+        response = delete_mockdata_url("wheniwork", "file", url, headers)
+        if response.status == 400:
+            return response
+
+        path = abspath(dirname(__file__) + "/../resources/wheniwork/file" +
+                       convert_to_platform_safe(url) + ".DELETE")
+        try:
+            handle = open(path)
+            response.data = handle.read()
+            response.status = 200
+        except IOError:
+            response.status = 404
+
+        return response
 
 
 class Live(object):
