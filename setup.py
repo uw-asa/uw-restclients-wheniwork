@@ -1,24 +1,15 @@
-import os
-from setuptools import setup
-
-README = open(os.path.join(os.path.dirname(__file__), 'README.md')).read()
-
-# allow setup.py to be run from any path
-os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
-
+from setuptools import setup, find_packages
 setup(
     name='wheniwork_restclient',
     version='0.1',
-    packages=['wheniwork_restclient'],
-    include_package_data=True,
+    packages=find_packages(),
     install_requires = [
-        'setuptools',
-        'Django<=1.8.6',
+        'Django',
         'urllib3',
         'certifi',
         'python-dateutil',
     ],
-    license='Apache License, Version 2.0',  # example license
+    license='Apache License, Version 2.0',
     description='A Django app for consuming the WhenIWork REST API',
-    long_description=README,
+    long_description='README.md',
 )

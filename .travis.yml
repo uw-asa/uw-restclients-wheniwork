@@ -1,18 +1,8 @@
-sudo: false
 language: python
-python:
-  - "2.7"
+env:
+  - PIP_PKGS="Django"
+  - PIP_PKGS="Django==1.8"
 install:
-  - pip install --upgrade setuptools>=28
-  - python setup.py -q install
-before_script:
-  - pip install coverage
-  - pip install python-coveralls
-  - pip install pep8
-  - cp travis-ci/manage.py manage.py
-  - python manage.py migrate --noinput
+  - pip install $PIP_PKGS -e .
 script:
-  - pep8 wheniwork_restclient/ --exclude=migrations
-  - coverage run --source=wheniwork_restclient/ --omit=wheniwork_restclient/migrations/* manage.py test wheniwork_restclient
-after_script:
-  - coveralls
+  - python runtests.py
