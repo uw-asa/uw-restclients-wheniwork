@@ -5,4 +5,5 @@ env:
 install:
   - pip install $PIP_PKGS -e .
 script:
+  - pep8 wheniwork_restclient
   - python runtests.py
