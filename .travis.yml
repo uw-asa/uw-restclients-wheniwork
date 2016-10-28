@@ -1,7 +1,7 @@
 language: python
 env:
-  - PIP_PKGS="Django"
-  - PIP_PKGS="Django==1.8"
+  - PIP_PKGS="pep8 Django"
+  - PIP_PKGS="pep8 Django==1.8"
 install:
   - pip install $PIP_PKGS -e .
 script:
