@@ -15,20 +15,28 @@ class Requests(WhenIWork):
         """
         if "status" in params:
             params['status'] = ','.join(map(str, params['status']))
-        url = "/2/requests/?%s" % urlencode(params)
 
-        data = self._get_resource(url)
         requests = []
-        for entry in data["users"]:
-            user = Users()._user_from_json(entry)
-            user.save()
-        for entry in data["requests"]:
-            request = self._request_from_json(entry)
-            request.save()
-            requests.append(request)
-        for entry in data["messages"]:
-            message = Messages()._message_from_json(entry)
-            message.save()
+        params['page'] = 0
+        while True:
+            url = "/2/requests/?%s" % urlencode(params)
+
+            data = self._get_resource(url)
+            for entry in data["users"]:
+                user = Users()._user_from_json(entry)
+                user.save()
+            for entry in data["requests"]:
+                request = self._request_from_json(entry)
+                request.save()
+                requests.append(request)
+            for entry in data["messages"]:
+                message = Messages()._message_from_json(entry)
+                message.save()
+
+            if not data['more']:
+                break
+
+            params['page'] += 1
 
         return requests
 
