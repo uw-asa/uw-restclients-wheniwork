@@ -5,5 +5,5 @@ env:
 install:
   - pip install $PIP_PKGS -e .
 script:
-  - pep8 wheniwork_restclient
+  - pep8 --exclude=migrations wheniwork_restclient
   - python runtests.py

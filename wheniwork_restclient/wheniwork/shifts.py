@@ -74,8 +74,10 @@ class Shifts(WhenIWork):
         shift.user_id = data['user_id']
         shift.account_id = data['account_id']
         shift.location_id = data['location_id']
-        shift.position_id = data['position_id']
-        shift.site_id = data['site_id']
+        if data['position_id']:
+            shift.position_id = data['position_id']
+        if data['site_id']:
+            shift.site_id = data['site_id']
         if 'start_time' in data and data['start_time']:
             shift.start_time = dateutil.parser.parse(data['start_time'])
         if 'end_time' in data and data['end_time']:

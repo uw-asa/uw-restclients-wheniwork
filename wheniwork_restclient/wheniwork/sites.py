@@ -45,6 +45,7 @@ class Sites(WhenIWork):
         site = Site()
         site.id = data["id"]
         site.name = data["name"]
-        site.location_id = data["location_id"]
+        if data["location_id"]:
+            site.location_id = data["location_id"]
         site.address = data["address"]
         return site

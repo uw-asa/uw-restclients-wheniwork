@@ -10,7 +10,9 @@ class Accounts(WhenIWork):
         http://dev.wheniwork.com/#get-existing-account
         """
         url = "/2/account/"
-        return self._account_from_json(self._get_resource(url)["account"])
+        account = self._account_from_json(self._get_resource(url)["account"])
+        account.save()
+        return account
 
     def _account_from_json(self, data):
         account = Account()

@@ -30,7 +30,7 @@ class Position(models.Model):
 class Site(models.Model):
     id = models.PositiveIntegerField(primary_key=True)
     name = models.CharField(max_length=100, null=True)
-    location = models.ForeignKey(Location)
+    location = models.ForeignKey(Location, null=True)
     address = models.CharField(max_length=100)
 
 
@@ -39,8 +39,8 @@ class Shift(models.Model):
     account = models.ForeignKey(Account)
     user = models.ForeignKey(User)
     location = models.ForeignKey(Location)
-    position = models.ForeignKey(Position)
-    site = models.ForeignKey(Site)
+    position = models.ForeignKey(Position, null=True)
+    site = models.ForeignKey(Site, null=True)
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
     notes = models.CharField(max_length=350)
