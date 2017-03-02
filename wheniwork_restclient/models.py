@@ -7,6 +7,9 @@ class Account(models.Model):
     master_id = models.PositiveIntegerField(null=True)
     company = models.CharField(max_length=500)
 
+    def __str__(self):
+        return self.company
+
 
 class User(models.Model):
     user_id = models.PositiveIntegerField(null=True)
@@ -15,16 +18,25 @@ class User(models.Model):
     email = models.CharField(max_length=100, null=True)
     employee_code = models.CharField(max_length=100, null=True)
 
+    def __str__(self):
+        return "%s %s" % self.employee_code
+
 
 class Location(models.Model):
     location_id = models.PositiveIntegerField(null=True)
     name = models.CharField(max_length=100, null=True)
     address = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.name
+
 
 class Position(models.Model):
     position_id = models.PositiveIntegerField(null=True)
     name = models.CharField(max_length=100, null=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Site(models.Model):
@@ -32,6 +44,9 @@ class Site(models.Model):
     name = models.CharField(max_length=100, null=True)
     location_id = models.PositiveIntegerField(null=True)
     address = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
 
 
 class Shift(models.Model):
@@ -97,3 +112,6 @@ class Message(models.Model):
     created_at = models.DateTimeField()
     updated_at = models.DateTimeField()
     type = models.PositiveSmallIntegerField()
+
+    def __str__(self):
+        return self.title
