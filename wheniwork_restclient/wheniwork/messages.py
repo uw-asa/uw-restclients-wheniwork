@@ -26,8 +26,6 @@ class Messages(WhenIWork):
         data = self._get_resource(url)
         messages = []
         for entry in data["messages"]:
-            message = self._message_from_json(entry)
-            message.save()
             messages.append(self._message_from_json(entry))
 
         return messages
@@ -68,7 +66,7 @@ class Messages(WhenIWork):
 
     def _message_from_json(self, data):
         message = Message()
-        message.id = data['id']
+        message.message_id = data['id']
         message.account_id = data['account_id']
         message.user_id = data['user_id']
         message.request_id = data['request_id']

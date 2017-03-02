@@ -11,7 +11,7 @@ class WhenIWorkTestUsers(TestCase):
             wheniwork = Users()
 
             user = wheniwork.get_user(4364)
-            self.assertEquals(user.id, 4364, "Has correct user id")
+            self.assertEquals(user.user_id, 4364, "Has correct user id")
             self.assertEquals(user.first_name, "Goldie",
                               "Has correct first name")
             self.assertEquals(user.last_name, "Wilson",

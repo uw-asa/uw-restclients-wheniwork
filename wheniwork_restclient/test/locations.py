@@ -11,7 +11,7 @@ class WhenIWorkTestLocations(TestCase):
             wheniwork = WhenIWork()
 
             locations = wheniwork.get_locations()
-            self.assertEquals(locations[0].id, 136)
+            self.assertEquals(locations[0].location_id, 136)
             self.assertEquals(locations[1].address, '100 Courthouse Square, '
                                                     'Hill Valley, CA 12345')
 

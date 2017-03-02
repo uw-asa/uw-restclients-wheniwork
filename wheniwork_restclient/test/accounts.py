@@ -11,5 +11,5 @@ class WhenIWorkTestAccounts(TestCase):
             wheniwork = WhenIWork()
 
             account = wheniwork.get_account()
-            self.assertEquals(account.id, 11)
+            self.assertEquals(account.account_id, 11)
             self.assertEquals(account.company, '123 Company')

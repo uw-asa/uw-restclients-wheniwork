@@ -3,13 +3,13 @@ from datetime import time
 
 
 class Account(models.Model):
-    id = models.PositiveIntegerField(primary_key=True)
-    master = models.ForeignKey('self')
+    account_id = models.PositiveIntegerField(null=True)
+    master_id = models.PositiveIntegerField(null=True)
     company = models.CharField(max_length=500)
 
 
 class User(models.Model):
-    id = models.PositiveIntegerField(primary_key=True)
+    user_id = models.PositiveIntegerField(null=True)
     first_name = models.CharField(max_length=100, null=True)
     last_name = models.CharField(max_length=100, null=True)
     email = models.CharField(max_length=100, null=True)
@@ -17,30 +17,30 @@ class User(models.Model):
 
 
 class Location(models.Model):
-    id = models.PositiveIntegerField(primary_key=True)
+    location_id = models.PositiveIntegerField(null=True)
     name = models.CharField(max_length=100, null=True)
     address = models.CharField(max_length=100)
 
 
 class Position(models.Model):
-    id = models.PositiveIntegerField(primary_key=True)
+    position_id = models.PositiveIntegerField(null=True)
     name = models.CharField(max_length=100, null=True)
 
 
 class Site(models.Model):
-    id = models.PositiveIntegerField(primary_key=True)
+    site_id = models.PositiveIntegerField(null=True)
     name = models.CharField(max_length=100, null=True)
-    location = models.ForeignKey(Location, null=True)
+    location_id = models.PositiveIntegerField(null=True)
     address = models.CharField(max_length=100)
 
 
 class Shift(models.Model):
-    id = models.PositiveIntegerField(primary_key=True)
-    account = models.ForeignKey(Account)
-    user = models.ForeignKey(User)
-    location = models.ForeignKey(Location)
-    position = models.ForeignKey(Position, null=True)
-    site = models.ForeignKey(Site, null=True)
+    shift_id = models.PositiveIntegerField(null=True)
+    account_id = models.PositiveIntegerField(null=True)
+    user_id = models.PositiveIntegerField(null=True)
+    location_id = models.PositiveIntegerField(null=True)
+    position_id = models.PositiveIntegerField(null=True)
+    site_id = models.PositiveIntegerField(null=True)
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
     notes = models.CharField(max_length=350)
@@ -57,10 +57,10 @@ class Request(models.Model):
     TYPE_SICKLEAVE = 2
     TYPE_HOLIDAY = 3
 
-    id = models.PositiveIntegerField(primary_key=True)
-    account = models.ForeignKey(Account)
-    user = models.ForeignKey(User)
-    creator = models.ForeignKey(User, related_name='+')
+    request_id = models.PositiveIntegerField(null=True)
+    account_id = models.PositiveIntegerField(null=True)
+    user_id = models.PositiveIntegerField(null=True)
+    creator_id = models.PositiveIntegerField(null=True)
     status = models.PositiveSmallIntegerField(choices=(
         (STATUS_PENDING, 'Pending'),
         (STATUS_CANCELED, 'Canceled'),
@@ -86,12 +86,12 @@ class Request(models.Model):
 
 
 class Message(models.Model):
-    id = models.PositiveIntegerField(primary_key=True)
-    account = models.ForeignKey(Account)
-    user = models.ForeignKey(User)
-    request = models.ForeignKey(Request)
-    swap_id = models.PositiveIntegerField()
-    conversation_id = models.PositiveIntegerField()
+    message_id = models.PositiveIntegerField(null=True)
+    account_id = models.PositiveIntegerField(null=True)
+    user_id = models.PositiveIntegerField(null=True)
+    request_id = models.PositiveIntegerField(null=True)
+    swap_id = models.PositiveIntegerField(null=True)
+    conversation_id = models.PositiveIntegerField(null=True)
     title = models.CharField(max_length=100)
     content = models.TextField()
     created_at = models.DateTimeField()
