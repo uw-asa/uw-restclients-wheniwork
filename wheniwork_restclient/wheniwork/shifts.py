@@ -72,8 +72,6 @@ class Shifts(WhenIWork):
             {'ids': ",".join(str(s) for s in shifts)})
 
         data = self._delete_resource(url)
-        for shift in Shift.objects.filter(id__in=shifts):
-            shift.delete()
 
         return data
 
