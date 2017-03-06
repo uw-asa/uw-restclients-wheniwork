@@ -58,7 +58,6 @@ class Shifts(WhenIWork):
 
         data = self._post_resource(url, body)
         shift = self._shift_from_json(data["shift"])
-        shift.save()
 
         return shift
 
