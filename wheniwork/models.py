@@ -67,26 +67,28 @@ class Request(models.Model):
     STATUS_CANCELED = 1
     STATUS_ACCEPTED = 2
     STATUS_EXPIRED = 3
+    STATUS_CHOICES = (
+        (STATUS_PENDING, 'Pending'),
+        (STATUS_CANCELED, 'Canceled'),
+        (STATUS_ACCEPTED, 'Accepted'),
+        (STATUS_EXPIRED, 'Expired'))
 
     TYPE_UNPAIDTIMEOFF = 0
     TYPE_PAIDTIMEOFF = 1
     TYPE_SICKLEAVE = 2
     TYPE_HOLIDAY = 3
+    TYPE_CHOICES = (
+        (TYPE_UNPAIDTIMEOFF, 'Unpaid Time Off'),
+        (TYPE_PAIDTIMEOFF, 'Paid Time Off'),
+        (TYPE_SICKLEAVE, 'Sick Leave'),
+        (TYPE_HOLIDAY, 'Holiday'))
 
     request_id = models.PositiveIntegerField(null=True)
     account_id = models.PositiveIntegerField(null=True)
     user_id = models.PositiveIntegerField(null=True)
     creator_id = models.PositiveIntegerField(null=True)
-    status = models.PositiveSmallIntegerField(choices=(
-        (STATUS_PENDING, 'Pending'),
-        (STATUS_CANCELED, 'Canceled'),
-        (STATUS_ACCEPTED, 'Accepted'),
-        (STATUS_EXPIRED, 'Expired')))
-    type = models.PositiveSmallIntegerField(choices=(
-        (TYPE_UNPAIDTIMEOFF, 'Unpaid Time Off'),
-        (TYPE_PAIDTIMEOFF, 'Paid Time Off'),
-        (TYPE_SICKLEAVE, 'Sick Leave'),
-        (TYPE_HOLIDAY, 'Holiday')))
+    status = models.PositiveSmallIntegerField()
+    type = models.PositiveSmallIntegerField()
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
     created_at = models.DateTimeField()
@@ -99,6 +101,16 @@ class Request(models.Model):
                 and self.end_time.time() == time(23, 59, 59):
             return True
         return False
+
+    def get_status_display(self):
+        for opt in self.STATUS_CHOICES:
+            if opt[0] == self.status:
+                return opt[1]
+
+    def get_type_display(self):
+        for opt in self.TYPE_CHOICES:
+            if opt[0] == self.type:
+                return opt[1]
 
 
 class Message(models.Model):
