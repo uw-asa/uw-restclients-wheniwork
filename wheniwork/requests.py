@@ -23,7 +23,8 @@ class Requests(WhenIWork):
         messages = {}
         params['page'] = 0
         while True:
-            url = "/2/requests/?%s" % urlencode(params)
+            param_list = [(k, params[k]) for k in sorted(params)]
+            url = "/2/requests/?%s" % urlencode(param_list)
 
             data = self._get_resource(url)
             for entry in data["users"]:

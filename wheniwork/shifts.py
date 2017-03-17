@@ -17,7 +17,8 @@ class Shifts(WhenIWork):
 
         http://dev.wheniwork.com/#listing-shifts
         """
-        url = "/2/shifts/?%s" % urlencode(params)
+        param_list = [(k, params[k]) for k in sorted(params)]
+        url = "/2/shifts/?%s" % urlencode(param_list)
 
         data = self._get_resource(url)
         shifts = []

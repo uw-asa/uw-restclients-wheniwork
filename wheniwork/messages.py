@@ -22,7 +22,8 @@ class Messages(WhenIWork):
 
         http://dev.wheniwork.com/#listing-messages
         """
-        url = "/2/messages/?%s" % urlencode(params)
+        param_list = [(k, params[k]) for k in sorted(params)]
+        url = "/2/messages/?%s" % urlencode(param_list)
 
         data = self._get_resource(url)
         messages = []
@@ -60,7 +61,7 @@ class Messages(WhenIWork):
 
         http://dev.wheniwork.com/#delete-existing-message
         """
-        url = "/2/messages/?%s" % urlencode({'ids': ",".join(messages)})
+        url = "/2/messages/?%s" % urlencode([('ids', ",".join(messages))])
 
         data = self._delete_resource(url)
         return data

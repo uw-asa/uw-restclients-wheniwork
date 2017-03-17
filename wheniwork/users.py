@@ -21,7 +21,8 @@ class Users(WhenIWork):
 
         http://dev.wheniwork.com/#listing-users
         """
-        url = "/2/users/?%s" % urlencode(params)
+        param_list = [(k, params[k]) for k in sorted(params)]
+        url = "/2/users/?%s" % urlencode(param_list)
 
         data = self._get_resource(url)
         users = []
