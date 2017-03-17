@@ -3,10 +3,9 @@ setup(
     name='wheniwork_restclient',
     version='0.1',
     packages=find_packages(),
-    install_requires = [
-        'Django',
+    install_requires=[
+        'UW-RestClients-Core>0.8,<1.0',
         'urllib3',
-        'certifi',
         'python-dateutil',
     ],
     license='Apache License, Version 2.0',

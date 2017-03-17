@@ -1,9 +1,19 @@
+sudo: false
 language: python
-env:
-  - PIP_PKGS="pep8 Django"
-  - PIP_PKGS="pep8 Django==1.8"
-install:
-  - pip install $PIP_PKGS -e .
+python:
+- '2.7'
+- '3.4'
+- '3.5'
+- '3.6'
+before_script:
+- pip install -e .
+- pip install pep8
+- pip install nose2
+- pip install coverage
+- pip install commonconf
+- pip install python-coveralls
 script:
-  - pep8 --exclude=migrations wheniwork_restclient
-  - python runtests.py
+- pep8 wheniwork
+- coverage run wheniwork/test.py -v
+after_script:
+- coveralls
