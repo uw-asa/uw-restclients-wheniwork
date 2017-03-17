@@ -11,7 +11,7 @@ class Sites(WhenIWork):
         """
         url = "/2/sites/%s" % site_id
 
-        return self._site_from_json(self._get_resource(url)["site"])
+        return self.site_from_json(self._get_resource(url)["site"])
 
     def get_sites(self):
         """
@@ -24,7 +24,7 @@ class Sites(WhenIWork):
         data = self._get_resource(url)
         sites = []
         for entry in data['sites']:
-            sites.append(self._site_from_json(entry))
+            sites.append(self.site_from_json(entry))
 
         return sites
 
@@ -38,9 +38,10 @@ class Sites(WhenIWork):
         body = params
 
         data = self._post_resource(url, body)
-        return self._site_from_json(data["site"])
+        return self.site_from_json(data["site"])
 
-    def _site_from_json(self, data):
+    @staticmethod
+    def site_from_json(data):
         site = Site()
         site.site_id = data["id"]
         site.name = data["name"]

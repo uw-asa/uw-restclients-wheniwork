@@ -26,19 +26,19 @@ class Shifts(WhenIWork):
         positions = {}
         users = {}
         for entry in data.get("locations", []):
-            location = Locations()._location_from_json(entry)
+            location = Locations.location_from_json(entry)
             locations[location.location_id] = location
         for entry in data.get("sites", []):
-            site = Sites()._site_from_json(entry)
+            site = Sites.site_from_json(entry)
             sites[site.site_id] = site
         for entry in data.get("positions", []):
-            position = Positions()._position_from_json(entry)
+            position = Positions.position_from_json(entry)
             positions[position.position_id] = position
         for entry in data.get("users", []):
-            user = Users()._user_from_json(entry)
+            user = Users.user_from_json(entry)
             users[user.user_id] = user
         for entry in data["shifts"]:
-            shift = self._shift_from_json(entry)
+            shift = self.shift_from_json(entry)
             shifts.append(shift)
 
         for shift in shifts:
@@ -59,7 +59,7 @@ class Shifts(WhenIWork):
         body = params
 
         data = self._post_resource(url, body)
-        shift = self._shift_from_json(data["shift"])
+        shift = self.shift_from_json(data["shift"])
 
         return shift
 
@@ -76,7 +76,8 @@ class Shifts(WhenIWork):
 
         return data
 
-    def _shift_from_json(self, data):
+    @staticmethod
+    def shift_from_json(data):
         shift = Shift()
         shift.shift_id = data['id']
         shift.user_id = data['user_id']

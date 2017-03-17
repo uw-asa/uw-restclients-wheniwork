@@ -13,7 +13,7 @@ class Users(WhenIWork):
         """
         url = "/2/users/%s" % user_id
 
-        return self._user_from_json(self._get_resource(url)["user"])
+        return self.user_from_json(self._get_resource(url)["user"])
 
     def get_users(self, params={}):
         """
@@ -26,11 +26,12 @@ class Users(WhenIWork):
         data = self._get_resource(url)
         users = []
         for entry in data["users"]:
-            users.append(self._user_from_json(entry))
+            users.append(self.user_from_json(entry))
 
         return users
 
-    def _user_from_json(self, data):
+    @staticmethod
+    def user_from_json(data):
         user = User()
         user.user_id = data["id"]
         user.first_name = data["first_name"]

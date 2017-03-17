@@ -27,13 +27,13 @@ class Requests(WhenIWork):
 
             data = self._get_resource(url)
             for entry in data["users"]:
-                user = Users()._user_from_json(entry)
+                user = Users.user_from_json(entry)
                 users[user.user_id] = user
             for entry in data["requests"]:
-                request = self._request_from_json(entry)
+                request = self.request_from_json(entry)
                 requests.append(request)
             for entry in data["messages"]:
-                message = Messages()._message_from_json(entry)
+                message = Messages.message_from_json(entry)
                 if message.request_id not in messages:
                     messages[message.request_id] = []
                 messages[message.request_id].append(message)
@@ -49,7 +49,8 @@ class Requests(WhenIWork):
 
         return requests
 
-    def _request_from_json(self, data):
+    @staticmethod
+    def request_from_json(data):
         request = Request()
         request.request_id = data['id']
         request.account_id = data['account_id']

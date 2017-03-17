@@ -11,7 +11,7 @@ class Locations(WhenIWork):
         """
         url = "/2/locations/%s" % location_id
 
-        return self._location_from_json(self._get_resource(url)["location"])
+        return self.location_from_json(self._get_resource(url)["location"])
 
     def get_locations(self):
         """
@@ -24,11 +24,12 @@ class Locations(WhenIWork):
         data = self._get_resource(url)
         locations = []
         for entry in data['locations']:
-            locations.append(self._location_from_json(entry))
+            locations.append(self.location_from_json(entry))
 
         return locations
 
-    def _location_from_json(self, data):
+    @staticmethod
+    def location_from_json(data):
         location = Location()
         location.location_id = data["id"]
         location.name = data["name"]

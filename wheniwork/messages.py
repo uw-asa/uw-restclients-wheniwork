@@ -14,7 +14,7 @@ class Messages(WhenIWork):
         """
         url = "/2/messages/%s" % message_id
 
-        return self._message_from_json(self._get_resource(url)["message"])
+        return self.message_from_json(self._get_resource(url)["message"])
 
     def get_messages(self, params={}):
         """
@@ -27,7 +27,7 @@ class Messages(WhenIWork):
         data = self._get_resource(url)
         messages = []
         for entry in data["messages"]:
-            messages.append(self._message_from_json(entry))
+            messages.append(self.message_from_json(entry))
 
         return messages
 
@@ -41,7 +41,7 @@ class Messages(WhenIWork):
         body = params
 
         data = self._post_resource(url, body)
-        return self._message_from_json(data["message"])
+        return self.message_from_json(data["message"])
 
     def update_message(self, message):
         """
@@ -52,7 +52,7 @@ class Messages(WhenIWork):
         url = "/2/messages/%s" % message.message_id
 
         data = self._put_resource(url, message.json_data())
-        return self._message_from_json(data)
+        return self.message_from_json(data)
 
     def delete_messages(self, messages):
         """
@@ -65,7 +65,8 @@ class Messages(WhenIWork):
         data = self._delete_resource(url)
         return data
 
-    def _message_from_json(self, data):
+    @staticmethod
+    def message_from_json(data):
         message = Message()
         message.message_id = data['id']
         message.account_id = data['account_id']

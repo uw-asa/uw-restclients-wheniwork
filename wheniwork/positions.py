@@ -11,7 +11,7 @@ class Positions(WhenIWork):
         """
         url = "/2/positions/%s" % position_id
 
-        return self._position_from_json(self._get_resource(url)["position"])
+        return self.position_from_json(self._get_resource(url)["position"])
 
     def get_positions(self):
         """
@@ -24,7 +24,7 @@ class Positions(WhenIWork):
         data = self._get_resource(url)
         positions = []
         for entry in data['positions']:
-            positions.append(self._position_from_json(entry))
+            positions.append(self.position_from_json(entry))
 
         return positions
 
@@ -38,9 +38,10 @@ class Positions(WhenIWork):
         body = params
 
         data = self._post_resource(url, body)
-        return self._position_from_json(data["position"])
+        return self.position_from_json(data["position"])
 
-    def _position_from_json(self, data):
+    @staticmethod
+    def position_from_json(data):
         position = Position()
         position.position_id = data["id"]
         position.name = data["name"]
