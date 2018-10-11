@@ -1,11 +1,9 @@
-from six.moves.urllib.parse import urlencode
-
 import dateutil.parser
-
+from six.moves.urllib.parse import urlencode
 from wheniwork import WhenIWork
+from wheniwork.locations import Locations
 from wheniwork.models import Shift
 from wheniwork.positions import Positions
-from wheniwork.locations import Locations
 from wheniwork.sites import Sites
 from wheniwork.users import Users
 

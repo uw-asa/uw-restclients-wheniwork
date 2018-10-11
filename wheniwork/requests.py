@@ -1,7 +1,5 @@
-from six.moves.urllib.parse import urlencode
-
 import dateutil.parser
-
+from six.moves.urllib.parse import urlencode
 from wheniwork import WhenIWork
 from wheniwork.messages import Messages
 from wheniwork.models import Request
