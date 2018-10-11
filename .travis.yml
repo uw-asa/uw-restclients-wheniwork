@@ -6,6 +6,7 @@ python:
 - '3.5'
 - '3.6'
 before_script:
+- if [ $TRAVIS_PYTHON_VERSION = 2.7 ]; then pip install 'UW-RestClients-Core<1.0' ; fi
 - pip install -e .
 - pip install pep8
 - pip install nose2

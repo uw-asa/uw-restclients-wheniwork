@@ -4,7 +4,7 @@ setup(
     version='0.1',
     packages=find_packages(),
     install_requires=[
-        'UW-RestClients-Core>0.8,<1.0',
+        'UW-RestClients-Core>0.8',
         'urllib3',
         'python-dateutil',
     ],
