@@ -1,20 +1,19 @@
 sudo: false
 language: python
 python:
-- '2.7'
-- '3.4'
-- '3.5'
-- '3.6'
-before_script:
-- if [ $TRAVIS_PYTHON_VERSION = 2.7 ]; then pip install 'UW-RestClients-Core<1.0' ; fi
-- pip install -e .
-- pip install pep8
-- pip install nose2
-- pip install coverage
-- pip install commonconf
-- pip install python-coveralls
+  - '2.7'
+  - '3.6'
+  - '3.7-dev'
+install:
+  - if [ $TRAVIS_PYTHON_VERSION = 2.7 ]; then pip install 'commonconf<1.0' ; fi
+  - if [ $TRAVIS_PYTHON_VERSION = 2.7 ]; then pip install 'UW-RestClients-Core<1.0' ; fi
+  - pip install -e .
+  - pip install pycodestyle
+  - pip install nose2
+  - pip install coverage
+  - pip install python-coveralls
 script:
-- pep8 wheniwork
-- coverage run wheniwork/test.py -v
+  - pycodestyle wheniwork
+  - coverage run wheniwork/test.py -v
 after_script:
-- coveralls
+  - coveralls
