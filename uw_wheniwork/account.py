@@ -1,5 +1,5 @@
-from wheniwork import WhenIWork
-from wheniwork.models import Account
+from . import WhenIWork
+from .models import Account
 
 
 class Accounts(WhenIWork):

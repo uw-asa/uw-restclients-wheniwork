@@ -1,6 +1,7 @@
 from six.moves.urllib.parse import urlencode
-from wheniwork import WhenIWork
-from wheniwork.models import User
+
+from . import WhenIWork
+from .models import User
 
 
 class Users(WhenIWork):

@@ -1,7 +1,7 @@
 from unittest import TestCase
 
-from wheniwork.sites import Sites
-from wheniwork.util import fdao_wheniwork_override
+from uw_wheniwork.sites import Sites
+from uw_wheniwork.util import fdao_wheniwork_override
 
 
 @fdao_wheniwork_override

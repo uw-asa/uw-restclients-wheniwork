@@ -1,7 +1,7 @@
 from unittest import TestCase
 
-from wheniwork.account import Accounts
-from wheniwork.util import fdao_wheniwork_override
+from uw_wheniwork.account import Accounts
+from uw_wheniwork.util import fdao_wheniwork_override
 
 
 @fdao_wheniwork_override

@@ -6,7 +6,7 @@ import re
 
 from restclients_core.exceptions import DataFailureException
 
-from wheniwork.dao import WhenIWork_DAO
+from .dao import WhenIWork_DAO
 
 
 class WhenIWork(object):

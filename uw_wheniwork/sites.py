@@ -1,5 +1,5 @@
-from wheniwork import WhenIWork
-from wheniwork.models import Site
+from . import WhenIWork
+from .models import Site
 
 
 class Sites(WhenIWork):

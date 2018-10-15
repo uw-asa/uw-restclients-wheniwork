@@ -1,7 +1,7 @@
 from unittest import TestCase
 
-from wheniwork.shifts import Shifts
-from wheniwork.util import fdao_wheniwork_override
+from uw_wheniwork.shifts import Shifts
+from uw_wheniwork.util import fdao_wheniwork_override
 
 
 @fdao_wheniwork_override

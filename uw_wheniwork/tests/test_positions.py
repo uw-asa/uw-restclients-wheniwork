@@ -1,7 +1,7 @@
 from unittest import TestCase
 
-from wheniwork.positions import Positions
-from wheniwork.util import fdao_wheniwork_override
+from uw_wheniwork.positions import Positions
+from uw_wheniwork.util import fdao_wheniwork_override
 
 
 @fdao_wheniwork_override

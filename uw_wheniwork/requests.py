@@ -1,9 +1,10 @@
 import dateutil.parser
 from six.moves.urllib.parse import urlencode
-from wheniwork import WhenIWork
-from wheniwork.messages import Messages
-from wheniwork.models import Request
-from wheniwork.users import Users
+
+from . import WhenIWork
+from .messages import Messages
+from .models import Request
+from .users import Users
 
 
 class Requests(WhenIWork):

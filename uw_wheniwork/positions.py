@@ -1,5 +1,5 @@
-from wheniwork import WhenIWork
-from wheniwork.models import Position
+from . import WhenIWork
+from .models import Position
 
 
 class Positions(WhenIWork):
