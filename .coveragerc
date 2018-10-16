@@ -1,4 +1,4 @@
 [run]
 branch = True
-source = wheniwork
-include = wheniwork/*
+source = uw_wheniwork
+include = uw_wheniwork/*

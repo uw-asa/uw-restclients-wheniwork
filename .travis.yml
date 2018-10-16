@@ -1,25 +1,25 @@
 sudo: false
 language: python
 python:
-  - '2.7'
-  - '3.6'
-  - '3.7-dev'
+- '2.7'
+- '3.6'
+- '3.7-dev'
 before_script:
-  - if [ $TRAVIS_PYTHON_VERSION = 2.7 ]; then pip install 'commonconf<1.0' ; fi
-  - if [ $TRAVIS_PYTHON_VERSION = 2.7 ]; then pip install 'UW-RestClients-Core<1.0' ; fi
-  - pip install -e .
-  - pip install pycodestyle
-  - pip install nose2
-  - pip install coverage
-  - pip install coveralls
+- if [ $TRAVIS_PYTHON_VERSION = 2.7 ]; then pip install 'commonconf<1.0' ; fi
+- if [ $TRAVIS_PYTHON_VERSION = 2.7 ]; then pip install 'UW-RestClients-Core<1.0' ; fi
+- pip install -e .
+- pip install pycodestyle
+- pip install nose2
+- pip install coverage
+- pip install coveralls
 script:
-  - pycodestyle uw_wheniwork
-  - coverage run uw_wheniwork/test.py -v
+- pycodestyle uw_wheniwork
+- coverage run uw_wheniwork/test.py -v
 after_script:
-  - coveralls
+- coveralls
 before_deploy:
-  - find uw_wheniwork/ -name \*.pyc -exec rm {} \;
-  - echo $TRAVIS_TAG > uw_wheniwork/VERSION
+- find uw_wheniwork/ -name \*.pyc -exec rm {} \;
+- echo $TRAVIS_TAG > uw_wheniwork/VERSION
 deploy:
   provider: pypi
   user: bradleyb
