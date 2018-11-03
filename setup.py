@@ -16,7 +16,10 @@ setup(
     install_requires=[
         'python-dateutil',
         'six',
-        'UW-RestClients-Core>0.8',
+        'CommonConf<1.0 ; python_version<"3"',
+        'CommonConf ; python_version>="3"',
+        'UW-RestClients-Core>0.8,<1.0 ; python_version<"3"',
+        'UW-RestClients-Core>0.8 ; python_version>="3"',
     ],
     license='Apache License, Version 2.0',
     description='Client for the WhenIWork REST API',
