@@ -13,6 +13,7 @@ setup(
     name='UW-RestClients-WhenIWork',
     version=VERSION,
     packages=['uw_wheniwork'],
+    include_package_data=True,
     install_requires=[
         'python-dateutil',
         'six',
